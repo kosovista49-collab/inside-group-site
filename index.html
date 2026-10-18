@@ -647,10 +647,10 @@
         </div>
 
         <form class="brief-form" id="briefForm" method="POST" name="brief" novalidate="">
-          <input type="hidden" name="form-name" value="brief">
           <input type="hidden" name="Анкета" id="summaryField">
+          <input type="hidden" name="_subject" value="Новая заявка с сайта Inside Group">
           <p style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
-            <label>Не заполняйте это поле: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+            <label>Не заполняйте это поле: <input name="_gotcha" tabindex="-1" autocomplete="off"></label>
           </p>
           <div class="quiz">
             <div class="quiz-progress"><div class="quiz-progress-fill" id="quizFill" style="width: 12.5%;"></div></div>
@@ -1042,10 +1042,10 @@
       var submitBtn = lastStep.querySelector('.quiz-submit');
       if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.6'; }
 
-      fetch('/', {
+      fetch('https://formspree.io/f/xaeqklej', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeFormData(data)
+        headers: { 'Accept': 'application/json' },
+        body: data
       })
         .then(function (response) {
           if (!response.ok) throw new Error('bad status');
